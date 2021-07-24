@@ -19,7 +19,7 @@ void Hal_uart_put_char(uint8_t ch)
 		Uart->uartdr.all = (ch & 0xFF);
 }
 
-void Hal_uart_get_char(void)
+uint8_t Hal_uart_get_char(void)
 {
 		uint8_t data;
 
