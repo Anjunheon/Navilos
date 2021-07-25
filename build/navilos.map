@@ -8,61 +8,61 @@ Linker script and memory map
 
                 0x0000000000000000                . = 0x0
 
-.text           0x0000000000000000      0x3cc
+.text           0x0000000000000000      0x338
  *(vector_start)
  *(.text .rodata)
  .text          0x0000000000000000       0xd4 build/Entry.os
                 0x0000000000000000                vector_start
                 0x000000000000003c                vector_end
- .text          0x00000000000000d4       0x64 build/Main.o
+ .text          0x00000000000000d4       0x9c build/Main.o
                 0x00000000000000d4                main
- .rodata        0x0000000000000138        0xe build/Main.o
- .text          0x0000000000000146        0x0 build/Regs.o
- *fill*         0x0000000000000146        0x2 
- .text          0x0000000000000148      0x224 build/Uart.o
-                0x0000000000000148                Hal_uart_init
-                0x00000000000001bc                Hal_uart_put_char
-                0x0000000000000218                Hal_uart_get_char
- .text          0x000000000000036c       0x60 build/stdio.o
-                0x000000000000036c                putstr
+ .rodata        0x0000000000000170        0xe build/Main.o
+ .text          0x000000000000017e        0x0 build/Regs.o
+ *fill*         0x000000000000017e        0x2 
+ .text          0x0000000000000180      0x158 build/Uart.o
+                0x0000000000000180                Hal_uart_init
+                0x00000000000001f4                Hal_uart_put_char
+                0x0000000000000250                Hal_uart_get_char
+ .text          0x00000000000002d8       0x60 build/stdio.o
+                0x00000000000002d8                putstr
 
-.glue_7         0x00000000000003cc        0x0
- .glue_7        0x00000000000003cc        0x0 linker stubs
+.glue_7         0x0000000000000338        0x0
+ .glue_7        0x0000000000000338        0x0 linker stubs
 
-.glue_7t        0x00000000000003cc        0x0
- .glue_7t       0x00000000000003cc        0x0 linker stubs
+.glue_7t        0x0000000000000338        0x0
+ .glue_7t       0x0000000000000338        0x0 linker stubs
 
-.vfp11_veneer   0x00000000000003cc        0x0
- .vfp11_veneer  0x00000000000003cc        0x0 linker stubs
+.vfp11_veneer   0x0000000000000338        0x0
+ .vfp11_veneer  0x0000000000000338        0x0 linker stubs
 
-.v4_bx          0x00000000000003cc        0x0
- .v4_bx         0x00000000000003cc        0x0 linker stubs
+.v4_bx          0x0000000000000338        0x0
+ .v4_bx         0x0000000000000338        0x0 linker stubs
 
-.iplt           0x00000000000003cc        0x0
- .iplt          0x00000000000003cc        0x0 build/Entry.os
+.iplt           0x0000000000000338        0x0
+ .iplt          0x0000000000000338        0x0 build/Entry.os
 
-.rel.dyn        0x00000000000003cc        0x0
- .rel.iplt      0x00000000000003cc        0x0 build/Entry.os
+.rel.dyn        0x0000000000000338        0x0
+ .rel.iplt      0x0000000000000338        0x0 build/Entry.os
 
-.data           0x00000000000003cc        0x4
+.data           0x0000000000000338        0x4
  *(.data)
- .data          0x00000000000003cc        0x0 build/Entry.os
- .data          0x00000000000003cc        0x0 build/Main.o
- .data          0x00000000000003cc        0x4 build/Regs.o
-                0x00000000000003cc                Uart
- .data          0x00000000000003d0        0x0 build/Uart.o
- .data          0x00000000000003d0        0x0 build/stdio.o
+ .data          0x0000000000000338        0x0 build/Entry.os
+ .data          0x0000000000000338        0x0 build/Main.o
+ .data          0x0000000000000338        0x4 build/Regs.o
+                0x0000000000000338                Uart
+ .data          0x000000000000033c        0x0 build/Uart.o
+ .data          0x000000000000033c        0x0 build/stdio.o
 
-.igot.plt       0x00000000000003d0        0x0
- .igot.plt      0x00000000000003d0        0x0 build/Entry.os
+.igot.plt       0x000000000000033c        0x0
+ .igot.plt      0x000000000000033c        0x0 build/Entry.os
 
-.bss            0x00000000000003d0        0x0
+.bss            0x000000000000033c        0x0
  *(.bss)
- .bss           0x00000000000003d0        0x0 build/Entry.os
- .bss           0x00000000000003d0        0x0 build/Main.o
- .bss           0x00000000000003d0        0x0 build/Regs.o
- .bss           0x00000000000003d0        0x0 build/Uart.o
- .bss           0x00000000000003d0        0x0 build/stdio.o
+ .bss           0x000000000000033c        0x0 build/Entry.os
+ .bss           0x000000000000033c        0x0 build/Main.o
+ .bss           0x000000000000033c        0x0 build/Regs.o
+ .bss           0x000000000000033c        0x0 build/Uart.o
+ .bss           0x000000000000033c        0x0 build/stdio.o
 LOAD build/Entry.os
 LOAD build/Main.o
 LOAD build/Regs.o
@@ -90,26 +90,26 @@ OUTPUT(build/navilos.axf elf32-littlearm)
  .comment       0x0000000000000038       0x39 build/Uart.o
  .comment       0x0000000000000038       0x39 build/stdio.o
 
-.debug_line     0x0000000000000000      0x1fb
+.debug_line     0x0000000000000000      0x1e8
  .debug_line    0x0000000000000000       0x6d build/Entry.os
- .debug_line    0x000000000000006d       0x58 build/Main.o
- .debug_line    0x00000000000000c5       0x4e build/Regs.o
- .debug_line    0x0000000000000113       0x94 build/Uart.o
- .debug_line    0x00000000000001a7       0x54 build/stdio.o
+ .debug_line    0x000000000000006d       0x5d build/Main.o
+ .debug_line    0x00000000000000ca       0x4e build/Regs.o
+ .debug_line    0x0000000000000118       0x7c build/Uart.o
+ .debug_line    0x0000000000000194       0x54 build/stdio.o
 
-.debug_info     0x0000000000000000     0x16f2
+.debug_info     0x0000000000000000     0x1714
  .debug_info    0x0000000000000000       0x46 build/Entry.os
- .debug_info    0x0000000000000046       0x9c build/Main.o
- .debug_info    0x00000000000000e2      0xa7d build/Regs.o
- .debug_info    0x0000000000000b5f      0xae6 build/Uart.o
- .debug_info    0x0000000000001645       0xad build/stdio.o
+ .debug_info    0x0000000000000046       0xbe build/Main.o
+ .debug_info    0x0000000000000104      0xa7d build/Regs.o
+ .debug_info    0x0000000000000b81      0xae6 build/Uart.o
+ .debug_info    0x0000000000001667       0xad build/stdio.o
 
-.debug_abbrev   0x0000000000000000      0x343
+.debug_abbrev   0x0000000000000000      0x34c
  .debug_abbrev  0x0000000000000000       0x14 build/Entry.os
- .debug_abbrev  0x0000000000000014       0x76 build/Main.o
- .debug_abbrev  0x000000000000008a       0xe4 build/Regs.o
- .debug_abbrev  0x000000000000016e      0x154 build/Uart.o
- .debug_abbrev  0x00000000000002c2       0x81 build/stdio.o
+ .debug_abbrev  0x0000000000000014       0x7f build/Main.o
+ .debug_abbrev  0x0000000000000093       0xe4 build/Regs.o
+ .debug_abbrev  0x0000000000000177      0x154 build/Uart.o
+ .debug_abbrev  0x00000000000002cb       0x81 build/stdio.o
 
 .debug_aranges  0x0000000000000000       0x98
  .debug_aranges
@@ -124,11 +124,11 @@ OUTPUT(build/navilos.axf elf32-littlearm)
                 0x0000000000000078       0x20 build/stdio.o
 
 .debug_str      0x0000000000000000      0x43f
- .debug_str     0x0000000000000000       0xd2 build/Main.o
-                                         0xeb (size before relaxing)
- .debug_str     0x00000000000000d2      0x30b build/Regs.o
+ .debug_str     0x0000000000000000       0xda build/Main.o
+                                         0xf3 (size before relaxing)
+ .debug_str     0x00000000000000da      0x30b build/Regs.o
                                         0x3dd (size before relaxing)
- .debug_str     0x00000000000003dd       0x4f build/Uart.o
+ .debug_str     0x00000000000003e5       0x47 build/Uart.o
                                         0x41c (size before relaxing)
  .debug_str     0x000000000000042c       0x13 build/stdio.o
                                          0xea (size before relaxing)
