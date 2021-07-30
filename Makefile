@@ -7,6 +7,7 @@ CC = arm-none-eabi-gcc
 AS = arm-none-eabi-as
 LD = arm-none-eabi-gcc
 OC = arm-none-eabi-objcopy
+OD = arm-none-eabi-objdump
 
 OUTDIR = ./out
 
@@ -19,16 +20,19 @@ ASM_OBJS = $(patsubst ./boot/%.S, $(OUTDIR)/%.os, $(ASM_SRCS))
 VPATH = boot					  \
 				hal/$(TARGET)	  \
 				lib							\
+				kernel					\
 
 C_SRCS  = $(notdir $(wildcard ./boot/*.c))
 C_SRCS += $(notdir $(wildcard ./hal/$(TARGET)/*.c))
 C_SRCS += $(notdir $(wildcard ./lib/*.c))
+C_SRCS += $(notdir $(wildcard ./kernel/*.c))
 C_OBJS = $(patsubst %.c, $(OUTDIR)/%.o, $(C_SRCS))
 
 INC_DIRS = -I include				 \
 					 -I hal						 \
 					 -I hal/$(TARGET)	 \
-					 -I lib
+					 -I lib						 \
+					 -I kernel				 \
 
 CFLAGS = -c -g -std=c11
 

@@ -7,6 +7,8 @@
 
 #include "stdbool.h"
 
+#include "Kernel.h"
+
 static void Hw_init(void);
 static void Kernel_init(void);
 
@@ -15,7 +17,7 @@ static void Timer_test(void);
 
 void User_task0(void);
 void User_task1(void);
-void User_task1(void);
+void User_task2(void);
 
 void main(void)
 {
@@ -32,6 +34,8 @@ void main(void)
 		
 		Printf_test();
 		Timer_test();
+
+		Kernel_init();
 
 		while(true);
 }
@@ -66,6 +70,8 @@ static void Kernel_init(void)
 		{
 				putstr("Task2 creation fail\n");
 		}
+
+		Kernel_start();
 }
 
 static void Printf_test(void)
@@ -86,7 +92,7 @@ static void Printf_test(void)
 
 static void Timer_test(void)
 {
-		while(true)
+		for(uint32_t i = 0; i < 5 ; i++)
 		{
 				debug_printf("current count : %u\n", Hal_timer_get_1ms_counter());
 				delay(1000);
@@ -95,21 +101,33 @@ static void Timer_test(void)
 
 void User_task0(void)
 {
-		debug_printf("User Task #0\n");
+		uint32_t local = 0;
 
-		while(true);
+		while(true)
+		{
+				debug_printf("User Task #0 SP=0x%x\n", &local);
+				Kernel_yield();
+		}
 }
 
 void User_task1(void)
 {
-		debug_printf("User Task #1\n");
+		uint32_t local = 0;
 
-		while(true);
+		while(true)
+		{
+				debug_printf("User Task #1 SP=0x%x\n", &local);
+				Kernel_yield();
+		}
 }
 
 void User_task2(void)
 {
-		debug_printf("User Task #2\n");
+		uint32_t local = 0;
 
-		while(true);
+		while(true)
+		{
+				debug_printf("User Task #2 SP=0x%x\n", &local);
+				Kernel_yield();
+		}
 }
