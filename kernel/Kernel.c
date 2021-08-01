@@ -67,7 +67,7 @@ bool Kernel_send_msg(KernelMsgQ_t Qname, void* data, uint32_t count)
 		return true;
 }
 
-uint32_t Kernel_recv_msg(kernelMsgQ_t Qname, void* out_data, uint32_t count)
+uint32_t Kernel_recv_msg(KernelMsgQ_t Qname, void* out_data, uint32_t count)
 {
 		uint8_t* d = (uint8_t*)out_data;
 

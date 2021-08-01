@@ -4,9 +4,9 @@
 
 #include "msg.h"
 
-KernelCirQ_t sMasgQ[KernelMsgQ_Num];
+KernelCirQ_t sMsgQ[KernelMsgQ_Num];
 
-void KErnel_msgQ_init(void)
+void Kernel_msgQ_init(void)
 {
 		for (uint32_t i = 0 ; i < KernelMsgQ_Num ; i++)
 		{
