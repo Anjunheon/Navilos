@@ -63,6 +63,11 @@ void Kernel_task_scheduler(void)
 		Kernel_task_context_switching();
 }
 
+uint32_t Kernel_task_get_current_task_id(void)
+{
+		return sCurrent_tcb_index;
+}
+
 __attribute__ ((naked)) void Kernel_task_context_switching(void)
 {
 		__asm__ ("B Save_context");
